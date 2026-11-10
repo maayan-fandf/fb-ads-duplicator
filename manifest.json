@@ -1,0 +1,59 @@
+{
+  "manifest_version": 3,
+  "name": "FB Ads Duplicator",
+  "description": "Duplicate selected Facebook ads into every other ad set in the same campaign with names cleaned up. Hit Ctrl+Shift+E.",
+  "version": "1.9",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": [
+    "https://*.facebook.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "duplicate-and-cleanup": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "mac": "Command+Shift+E"
+      },
+      "description": "Duplicate selected ads to all other ad sets and strip the \"- Copy\" suffix"
+    },
+    "toggle-panels": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Q"
+      },
+      "description": "Toggle the left-edge collapse panels (sidebar + preview)"
+    },
+    "insert-today-date": {
+      "suggested_key": {
+        "default": "Alt+Shift+D",
+        "mac": "Alt+Shift+D"
+      },
+      "description": "Insert today's date (yyyy-mm-dd) at the cursor"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.facebook.com/adsmanager/*",
+        "https://adsmanager.facebook.com/*",
+        "https://business.facebook.com/adsmanager/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

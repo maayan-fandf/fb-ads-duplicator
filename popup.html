@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FB Ads Duplicator</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="header">
+    <img src="icons/icon48.png" width="22" height="22" />
+    <span class="header-title">FB Ads Duplicator</span>
+  </div>
+
+  <div class="section">
+    <p class="hint-block">
+      Select ads in the Ads Manager table, then hit
+      <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>
+      or use the button below.
+    </p>
+    <div class="row">
+      <button class="btn primary" id="ui-run-btn">Duplicate + clean up names</button>
+    </div>
+    <div id="ui-msg"></div>
+  </div>
+
+  <div class="section">
+    <div class="sub-title">Ad name</div>
+    <div class="row">
+      <button class="btn" id="date-btn">Insert today's date</button>
+    </div>
+    <p class="hint-block tiny">
+      Click in the ad name field first, then this button. If no field is
+      focused, the date is copied instead — paste it with
+      <kbd>Ctrl</kbd>+<kbd>V</kbd>.
+    </p>
+    <div id="date-msg"></div>
+  </div>
+
+  <div class="section subtle">
+    <div class="sub-title">Shortcuts</div>
+    <p class="hint-block tiny" style="margin-top:0">
+      <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>
+      &nbsp;— duplicate selected ads + clean up names<br/>
+      <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Q</kbd>
+      &nbsp;— collapse / expand both side panels<br/>
+      <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>
+      &nbsp;— insert today's date (<span class="mono">yyyy-mm-dd</span>) at cursor
+    </p>
+  </div>
+
+  <div class="section subtle">
+    <div class="sub-title">Fallbacks</div>
+    <div class="row">
+      <button class="btn" id="ui-fnr-btn">Strip "- Copy" only</button>
+      <button class="btn" id="ui-diagnose-btn">Diagnose</button>
+    </div>
+    <p class="hint-block tiny">
+      <b>Strip "- Copy" only:</b> use this if the auto flow stops before renaming.
+      With the duplicated drafts still selected in the table, just click the
+      button — it opens <i>Find and replace</i> itself and strips " - Copy".
+    </p>
+    <pre id="ui-diag" class="diag" style="display:none"></pre>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
